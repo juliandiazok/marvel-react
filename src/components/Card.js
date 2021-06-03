@@ -1,9 +1,10 @@
 import React from 'react';
-import './Card.css'
+import './Card.css';
+import { Star } from 'react-bootstrap-icons';
 
 function Card({title, imageSource}) {
     return (
-        <div className="card text-white">
+        <a href="-" className="card text-white">
             <img src={imageSource} class="card-img" alt="Iron Man"></img>
             <div className="card-img-overlay d-flex flex-column">
                 <h6 class="mt-auto ">
@@ -12,10 +13,12 @@ function Card({title, imageSource}) {
             </div>
             <div className="card-img-overlay">
                 <div class="favorito">
-                    <button>Fav</button>
+                    <div>
+                        <Star size={22}  />
+                    </div>
                 </div>
             </div>
-        </div>
+        </a>
     )
 }
 
