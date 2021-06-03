@@ -1,3 +1,8 @@
 .favorito {
     float: right;
 }
+
+.star {
+    font-size: 25px;
+      color:gold;
+  }
