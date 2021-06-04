@@ -1,0 +1,8 @@
+.form-control::-webkit-input-placeholder {
+    color: #E0E0E0;
+}
+
+.busqueda {
+    margin-right: -0.8em;
+    margin-left: 2px;
+}
