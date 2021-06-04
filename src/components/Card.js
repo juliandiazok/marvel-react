@@ -5,14 +5,14 @@ import { Star } from 'react-bootstrap-icons';
 function Card({title, imageSource}) {
     return (
         <a href="-" className="card text-white">
-            <img src={imageSource} class="card-img" alt="Iron Man"></img>
+            <img src={imageSource} className="card-img" alt="Iron Man"></img>
             <div className="card-img-overlay d-flex flex-column">
-                <h6 class="mt-auto ">
+                <h6 className="mt-auto ">
                     <strong>{title}</strong>
                 </h6>
             </div>
             <div className="card-img-overlay">
-                <div class="favorito">
+                <div className="favorito">
                     <div>
                         <Star size={22}  />
                     </div>

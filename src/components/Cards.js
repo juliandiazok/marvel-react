@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './Card';
+import './Cards.css';
 import image1 from   '../assets/image1.jpg';
 
 const cards = [
@@ -25,7 +26,7 @@ const cards = [
 
 function Cards() {
     return (
-        <div class="container d-flex justify-content-center align-items-center h-100">
+        <div className="Cards container d-flex justify-content-center align-items-center">
             <div className="row">
                 {
                     cards.map(card => (
