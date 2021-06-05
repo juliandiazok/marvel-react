@@ -1,7 +1,18 @@
 import React from 'react';
 import Card from './Card';
-import './Cards.css';
+import styled from "styled-components";
 import image1 from   '../assets/image1.jpg';
+
+// styles Navbar
+export const CardsStyle = styled.header`
+.Cards {
+    margin-top: 7em;
+    width: auto;
+    height: auto;
+    
+}
+`;
+// styles Navbar
 
 const cards = [
     {
@@ -26,17 +37,19 @@ const cards = [
 
 function Cards() {
     return (
-        <div className="Cards container d-flex justify-content-center align-items-center">
-            <div className="row">
-                {
-                    cards.map(card => (
-                        <div className="col-md-3" key={card.id}>
-                            <Card title={card.title} imageSource={card.image} />
-                        </div>)
-                    )
-                }
+        <CardsStyle>
+            <div className="Cards container d-flex justify-content-center align-items-center">
+                <div className="row">
+                    {
+                        cards.map(card => (
+                            <div className="col-md-3" key={card.id}>
+                                <Card title={card.title} imageSource={card.image} />
+                            </div>)
+                        )
+                    }
+                </div>
             </div>
-        </div>
+        </CardsStyle>
     )
 }
 

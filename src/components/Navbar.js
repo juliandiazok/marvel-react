@@ -1,29 +1,82 @@
-import React from 'react';
-import './Navbar.css';
-import { Star } from 'react-bootstrap-icons';
-import SearchBar from './SearchBar';
+import React, { useState } from 'react';
+import styled from "styled-components";
 import logoMarvel from '../assets/marvel.svg';
+import { useHistory } from "react-router-dom";
 
-function Navbar() {
-    return (
-        <div>
-            <nav className="navbar navbar-expand-md bg-white">
-                <div className="container-fluid">
-                    <div className="barra">
-                        <div className="firstPart">
-                            <a className='logo' href="https://www.marvel.com/">
-                                <img src={logoMarvel} alt="Marvel" height="25px" />
-                            </a>
-                        </div>
-                        <SearchBar />
-                    </div>
-                    <div className="fav">
-                        <Star size={22} color='#BDBDBD' src="/#" />
-                    </div>
-                </div>
-            </nav>       
-        </div>
-    )
+// styles Navbar
+export const NavbarStyle = styled.header`
+grid-column: 1/-1;
+background-color: white;
+-webkit-box-shadow: 3px 3px 3px 3px rgb(223, 222, 222);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+-moz-box-shadow:    3px 3px 3px 3px rgb(223, 222, 222);  /* Firefox 3.5 - 3.6 */
+box-shadow:         3px 3px 3px 3px rgb(223, 222, 222);  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 1.2vh 1vw;
+margin: 3px 5px 0px 5px;
+
+.first {
+display: flex;
+align-items: center;
 }
 
-export default Navbar
+.logo::after {
+    color: #E0E0E0;
+    content: "|";
+    padding-left: 1em;
+    font-size: 20px;
+}
+
+.search {
+margin-left: 1vw;
+font-size: 16px;
+opacity: 0.4;
+}
+
+.search input {
+margin-left: 0.8vw;
+background-color: white;
+outline: none;
+border: none;
+}
+
+.fav {
+margin-right: 2vw;
+color: #BDBDBD;
+font-size: 18px;
+}
+`;
+// styles Navbar
+
+const Navbar = () => {
+    const [inputValue, setInputValue] = useState("");
+    const history = useHistory();
+    const marvelSearch = (e) => {
+    setInputValue(e.target.value);
+    };
+    const marvelSubmit = () => {
+    history.push("/" + inputValue);
+    setInputValue("");
+    };
+    return (
+        <NavbarStyle>
+            <div className="first">
+                <div className='logo'>
+                    <img src={logoMarvel} alt="Marvel" height="30px"/>
+                </div>
+                <form className="search" onSubmit={marvelSubmit}>
+                <i className="fas fa-search"/>
+                <input
+                type="text"
+                placeholder="Buscar"
+                value={inputValue}
+                onChange={marvelSearch}
+                />
+            </form>
+        </div>
+        <a href="/#"><i className="far fa-star fav"></i></a>
+        </NavbarStyle>
+    );
+};
+export default Navbar;
