@@ -1,49 +1,37 @@
 import React from 'react';
 import Card from './Card';
 import styled from "styled-components";
-import image1 from   '../assets/image1.jpg';
 
-// styles Navbar
+// styles Cards
 export const CardsStyle = styled.header`
-.Cards {
-    margin-top: 7em;
-    width: auto;
-    height: auto;
-    
+
+.columna {
+    margin-top: 2em;
 }
-`;
-// styles Navbar
 
-const cards = [
-    {
-        id: 1,
-        title: 'Iron Man',
-        favorite: true,
-        image: image1
-    },
-    {
-        id: 2,
-        title: 'Captain America',
-        favorite: false,
-        image: image1
-    },
-    {
-        id: 3,
-        title: 'Hulk',
-        favorite: false,
-        image: image1
+.row:first-child {
+    margin-top: 5em;
+}
+
+.row:last-child {
+    margin-bottom: 5em;
+}
+
+.row {
+    display: flex;
     }
-]
+`;
+// styles Cards
 
-function Cards() {
+function Cards({elements}) {
     return (
         <CardsStyle>
             <div className="Cards container d-flex justify-content-center align-items-center">
                 <div className="row">
                     {
-                        cards.map(card => (
-                            <div className="col-md-3" key={card.id}>
-                                <Card title={card.title} imageSource={card.image} />
+                        elements.map(element => (
+                            <div className="col-md-3 columna" key={element.id}>
+                                <Card element={element} />
                             </div>)
                         )
                     }
