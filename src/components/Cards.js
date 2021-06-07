@@ -5,38 +5,38 @@ import styled from "styled-components";
 // styles Cards
 export const CardsStyle = styled.header`
 
-.columna {
-    margin-top: 2em;
+.containerHero {
+    margin: 4em 2em 0 2em;
+    padding-bottom: 4em;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
 }
 
-.row:first-child {
-    margin-top: 5em;
-}
-
-.row:last-child {
-    margin-bottom: 5em;
-}
-
-.row {
-    display: flex;
+@media (max-width: 600px) {
+    .containerHero {
+      grid-template-columns: repeat(2, 1fr);
     }
+  }
+  
+  @media (max-width: 350px) {
+    .containerHero {
+      grid-template-columns: 1fr;
+    }
+  }
 `;
 // styles Cards
 
 function Cards({elements}) {
     return (
         <CardsStyle>
-            <div className="Cards container d-flex justify-content-center align-items-center">
-                <div className="row">
-                    {
-                        elements.map(element => (
-                            <div className="col-md-3 columna" key={element.id}>
-                                <Card element={element} />
-                            </div>)
-                        )
-                    }
-                </div>
-            </div>
+            <section className="containerHero">
+                {
+                    elements.map(element => (
+                            <Card key={element.id} element={element} />)
+                    )
+                }
+            </section>
         </CardsStyle>
     )
 }

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from "styled-components";
 import logoMarvel from '../assets/marvel.svg';
-import { useHistory } from "react-router-dom";
 
 // styles Navbar
 export const NavbarStyle = styled.header`
@@ -49,33 +48,33 @@ font-size: 18px;
 `;
 // styles Navbar
 
-const Navbar = () => {
-    const [inputValue, setInputValue] = useState("");
-    const history = useHistory();
-    const marvelSearch = (e) => {
-    setInputValue(e.target.value);
-    };
-    const marvelSubmit = () => {
-    history.push("/" + inputValue);
-    setInputValue("");
-    };
+const Navbar = ({search}) => {
+    const [text,setText] = useState('')
+    const onSrch = (srch) =>{
+        setText(srch)
+        search(srch)
+    }
+    const handleSubmit = (event) => {
+        event.preventDefault()
+    }
     return (
         <NavbarStyle>
             <div className="first">
                 <div className='logo'>
                     <img src={logoMarvel} alt="Marvel" height="30px"/>
                 </div>
-                <form className="search" onSubmit={marvelSubmit}>
-                <i className="fas fa-search"/>
-                <input
-                type="text"
-                placeholder="Buscar"
-                value={inputValue}
-                onChange={marvelSearch}
-                />
-            </form>
-        </div>
-        <a href="/#"><i className="far fa-star fav"></i></a>
+                <form className="search">
+                    <i className="fas fa-search"/>
+                    <input
+                    type="text"
+                    placeholder="Buscar"
+                    onChange={(s) => onSrch(s.target.value)}
+                    onClick={(event) => { handleSubmit(event)}}
+                    value={text}
+                    />
+                </form>
+            </div>
+            <a href="/#"><i className="far fa-star fav"></i></a>
         </NavbarStyle>
     );
 };
