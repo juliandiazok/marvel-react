@@ -7,6 +7,10 @@ export const CardStyle = styled.header`
 .favorito {
     float: right;
 }
+
+.name {
+    text-shadow: 1px 0 0 black, -1px 0 0 black, 0 1px 0 black, 0 -1px 0 black, 1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
+}
 `;
 // styles Card
 
@@ -16,7 +20,7 @@ function Card({element}) {
             <a href="-" className="card text-white">
                 <img src={element.thumbnail.path + "/portrait_uncanny." + element.thumbnail.extension} className="card-img" alt="Iron Man"></img>
                 <div className="card-img-overlay d-flex flex-column">
-                    <h6 className="mt-auto ">
+                    <h6 className="mt-auto name">
                         <strong>{element.name}</strong>
                     </h6>
                 </div>
