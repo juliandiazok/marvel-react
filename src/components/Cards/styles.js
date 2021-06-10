@@ -1,5 +1,3 @@
-import React from 'react';
-import Card from './Card';
 import styled from "styled-components";
 
 // styles Cards
@@ -11,6 +9,12 @@ export const CardsStyle = styled.header`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
+}
+
+@media (min-width: 1500px) {
+  .containerHero {
+    grid-template-columns: repeat(5, 1fr);
+  }
 }
 
 @media (max-width: 600px) {
@@ -26,19 +30,3 @@ export const CardsStyle = styled.header`
   }
 `;
 // styles Cards
-
-function Cards({elements}) {
-    return (
-        <CardsStyle>
-            <section className="containerHero">
-                {
-                    elements.map(element => (
-                            <Card key={element.id} element={element} />)
-                    )
-                }
-            </section>
-        </CardsStyle>
-    )
-}
-
-export default Cards

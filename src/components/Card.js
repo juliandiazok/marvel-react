@@ -1,5 +1,4 @@
 import React from 'react';
-import { Star } from 'react-bootstrap-icons';
 import styled from "styled-components";
 
 // styles Card
@@ -14,11 +13,15 @@ export const CardStyle = styled.header`
 `;
 // styles Card
 
-function Card({element}) {
+function Card({element,toggleModal,onCharacterChange}) {
+    const onClick = () => {
+        toggleModal()
+        onCharacterChange(element)
+    }
     return (
-        <CardStyle>
-            <a href="-" className="card text-white">
-                <img src={element.thumbnail.path + "/portrait_uncanny." + element.thumbnail.extension} className="card-img" alt="Iron Man"></img>
+        <CardStyle onClick={onClick}>
+            <a id="myCard" className="card text-white" href="/#">
+                <img src={element.thumbnail.path + "/portrait_uncanny." + element.thumbnail.extension} className="card-img" alt={element.name}></img>
                 <div className="card-img-overlay d-flex flex-column">
                     <h6 className="mt-auto name">
                         <strong>{element.name}</strong>
@@ -27,7 +30,7 @@ function Card({element}) {
                 <div className="card-img-overlay">
                     <div className="favorito">
                         <div>
-                            <Star size={22}  />
+                            <i className="far fa-star fav"/>
                         </div>
                     </div>
                 </div>
