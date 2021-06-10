@@ -3,7 +3,7 @@ import styled from "styled-components";
 import axios from 'axios';
 import Cards from './components/Cards/Cards';
 import Navbar from './components/Navbar/Navbar';
-import Modal from './components/Modal';
+import Modal from './components/Modal/Modal';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 
