@@ -1,9 +1,10 @@
 import React from 'react';
 import Card from '../Card/Card';
+import Loading from '../Loading/Loading';
 import {CardsStyle} from './styles'
 
 const Cards = ({elements,isLoading,toggleModal,onCharacterChange}) => {
-      return isLoading ? <h1>Cargando elementos...</h1> :
+      return isLoading ? <Loading></Loading> :
         <CardsStyle>
             <section className="containerHero">
                 {

@@ -8,6 +8,10 @@ export const Nav = styled.nav`
     justify-content: space-between;
     padding: 0.5rem calc((50vw - 1000px) / 2);
     z-index: 10;
+    margin: 4px 4px 4px 4px;
+    -webkit-box-shadow: 0px 15px 10px -15px gray, 0px -15px 10px -15px gray;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ 
+    -moz-box-shadow:    0px 15px 10px -15px gray, 0px -15px 10px -15px gray;  /* Firefox 3.5 - 3.6 
+    box-shadow:         0px 15px 10px -15px gray, 0px -15px 10px -15px gray;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 
     /* Third Nav */
     /* justify-content: flex-start; */
 `;
