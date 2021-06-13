@@ -1,15 +1,17 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import ComicLoading from '../ComicLoading/Loading';
 import {ModalStyle,OverlayStyle} from './styles'
 
 
 function Modal({activeCharacter={},toggleModal}) {
-    const[comic,setComic] = useState([])
+    const[comic,setComic] = useState([]);
+    const[isComicLoading,setComicLoading] = useState(true);
 
     useEffect(()=>{
       const fetch = async()=>{
           const json = await axios(`https://gateway.marvel.com:443/v1/public/characters/${activeCharacter.id}/comics?orderBy=onsaleDate&apikey=c70bee055661b1eabc28f40a0fea1796&limit=100`)
-          console.log(json.data.data.results)
+          setComicLoading(false)
           setComic(json.data.data.results)
       }
 
@@ -34,7 +36,9 @@ function Modal({activeCharacter={},toggleModal}) {
                                 </div>
                                 <div className="comics">
                                     <h5>Number of comics: {activeCharacter.comics.available}</h5>
+                                    {isComicLoading ? <ComicLoading></ComicLoading> : 
                                     <div className="comics-container">{comic.map(comic =><li key={comic.id}><a className="comic-link" href={comic.urls[0].url}>{comic.title}</a></li>)}</div>
+                                    }
                                 </div>
                             </div>
                         </div>
