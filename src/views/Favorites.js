@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import styled from 'styled-components';
-import { getAllCharacters } from '../api/characters';
 import Cards from '../components/Cards/Cards';
 import Navbar from '../components/Navbar/Navbar';
 import Modal from '../components/Modal/Modal';
@@ -19,6 +18,27 @@ export const FavoritesStyle = styled.header`
 // styles Favorites
 
 function Favorites() {
+	const [elements, setElements] = useState([]);
+	const [query, setQuery] = useState('');
+	const [isLoading, setLoading] = useState(true);
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [activeCharacter, setActiveCharacter] = useState({});
+	const { search } = useLocation();
+	const values = queryString.parse(search);
+
+	useEffect(() => {
+		var arrayOfFavorites = JSON.parse(localStorage.getItem('favorites') || '0');
+		setElements(arrayOfFavorites);
+		setLoading(false);
+	}, []);
+
+	const toggleModal = () => {
+		setIsModalOpen(!isModalOpen);
+	};
+
+	const onCharacterChange = (element) => {
+		setActiveCharacter(element);
+	};
 
 	return (
 		<FavoritesStyle>

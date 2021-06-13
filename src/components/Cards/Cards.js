@@ -1,19 +1,29 @@
 import React from 'react';
 import Card from '../Card/Card';
 import Loading from '../Loading/Loading';
-import {CardsStyle} from './styles'
+import { CardsStyle } from './styles';
 
-const Cards = ({elements,isLoading,toggleModal,onCharacterChange}) => {
-      return isLoading ? <Loading></Loading> :
-        <CardsStyle>
-            <section className="containerHero">
-                {
-                    elements.map(element => (
-                            <Card key={element.id} element={element} toggleModal={toggleModal} onCharacterChange={onCharacterChange}/>)
-                    )
-                }
-            </section>
-        </CardsStyle>
-}
+const Cards = ({ elements, isLoading, toggleModal, onCharacterChange }) => {
+	return isLoading ? (
+		<Loading></Loading>
+	) : elements == '' ? (
+		<CardsStyle>
+			<h2 className='nofav'>No hay elementos favoritos... Todavía</h2>
+		</CardsStyle>
+	) : (
+		<CardsStyle>
+			<section className='containerHero'>
+				{elements.map((element) => (
+					<Card
+						key={element.id}
+						element={element}
+						toggleModal={toggleModal}
+						onCharacterChange={onCharacterChange}
+					/>
+				))}
+			</section>
+		</CardsStyle>
+	);
+};
 
-export default Cards
+export default Cards;
