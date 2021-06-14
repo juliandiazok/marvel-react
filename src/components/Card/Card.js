@@ -13,7 +13,7 @@ function Card({ element, toggleModal, onCharacterChange }) {
 				setIsFavorite(true);
 			}
 		}
-	}, []);
+	}, [element.id]);
 
 	const onClick = () => {
 		toggleModal();
