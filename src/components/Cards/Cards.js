@@ -6,9 +6,10 @@ import { CardsStyle } from './styles';
 const Cards = ({ elements, isLoading, toggleModal, onCharacterChange }) => {
 	return isLoading ? (
 		<Loading></Loading>
-	) : elements == '' ? (
+	) : elements.length === 0 ? (
 		<CardsStyle>
 			<h2 className='nofav'>No hay elementos favoritos... Todavía</h2>
+			{console.log(elements)}
 		</CardsStyle>
 	) : (
 		<CardsStyle>

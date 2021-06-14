@@ -14,5 +14,9 @@ export const CardStyle = styled.header`
 	.card {
 		cursor: pointer;
 	}
+
+	.fav {
+		text-shadow: 0 0 3px black;
+	}
 `;
 // styles Card

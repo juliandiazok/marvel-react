@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import queryString from 'query-string';
 import styled from 'styled-components';
 import Cards from '../components/Cards/Cards';
 import Navbar from '../components/Navbar/Navbar';
@@ -23,14 +21,20 @@ function Favorites() {
 	const [isLoading, setLoading] = useState(true);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [activeCharacter, setActiveCharacter] = useState({});
-	const { search } = useLocation();
-	const values = queryString.parse(search);
 
 	useEffect(() => {
 		var arrayOfFavorites = JSON.parse(localStorage.getItem('favorites') || '0');
-		setElements(arrayOfFavorites);
-		setLoading(false);
-	}, []);
+		if (query) {
+			var filtered = arrayOfFavorites.filter((f) =>
+				f.name.toUpperCase().startsWith(query.toUpperCase())
+			);
+			setElements(filtered);
+			setLoading(false);
+		} else {
+			setElements(arrayOfFavorites);
+			setLoading(false);
+		}
+	}, [query]);
 
 	const toggleModal = () => {
 		setIsModalOpen(!isModalOpen);
