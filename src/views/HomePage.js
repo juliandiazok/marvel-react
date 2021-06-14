@@ -27,7 +27,6 @@ function App() {
 	const { search } = useLocation();
 	const values = queryString.parse(search);
 
-
 	useEffect(() => {
 		getCharacters(values.character);
 	}, [values.character]);
@@ -47,8 +46,7 @@ function App() {
 			})
 			.finally(() => {
 				setLoading(false);
-			}
-	);
+			});
 
 	const toggleModal = () => {
 		setIsModalOpen(!isModalOpen);
