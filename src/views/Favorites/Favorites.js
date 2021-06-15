@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { FavoritesStyle } from './styles';
 import { filteredFavorites } from '../../utils/characters';
+import {
+	fetchCharactersSuccess,
+	setActiveCharacter,
+} from '../../redux/characters/actions';
+import { setDarkTheme, setLightTheme } from '../../redux/theme/actions';
 import Cards from '../../components/Cards/Cards';
 import Navbar from '../../components/Navbar/Navbar';
 import Modal from '../../components/Modal/Modal';
@@ -9,23 +15,22 @@ import Modal from '../../components/Modal/Modal';
 const URL = "https://gateway.marvel.com/v1/public/characters?ts=1&apikey=8f83230b46183b4e034c4dddfde45a8e&hash=" + hash; */
 
 function Favorites() {
-	const [elements, setElements] = useState([]);
+	const dispatch = useDispatch();
+	const { characters, isLoading, activeCharacter } = useSelector(
+		(state) => state?.characters
+	);
+	const { theme } = useSelector((state) => state?.themes);
 	const [query, setQuery] = useState('');
-	const [isLoading, setLoading] = useState(true);
-	const [theme, setTheme] = useState('light');
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [activeCharacter, setActiveCharacter] = useState({});
 
 	useEffect(() => {
 		var arrayOfFavorites = JSON.parse(localStorage.getItem('favorites') || '0');
 		if (query) {
 			const filtered = filteredFavorites(query, arrayOfFavorites);
-			setElements(filtered);
-			setLoading(false);
+			dispatch(fetchCharactersSuccess(filtered));
 			console.log(filtered);
 		} else {
-			setElements(arrayOfFavorites);
-			setLoading(false);
+			dispatch(fetchCharactersSuccess(arrayOfFavorites));
 		}
 	}, [query]);
 
@@ -33,15 +38,15 @@ function Favorites() {
 		setIsModalOpen(!isModalOpen);
 	};
 
-	const onCharacterChange = (element) => {
-		setActiveCharacter(element);
+	const onCharacterChange = (characters) => {
+		dispatch(setActiveCharacter(characters));
 	};
 
 	const changeTheme = () => {
 		if (theme === 'light') {
-			setTheme('dark');
+			dispatch(setDarkTheme());
 		} else {
-			setTheme('light');
+			dispatch(setLightTheme());
 		}
 	};
 
@@ -53,7 +58,7 @@ function Favorites() {
 				changeTheme={changeTheme}
 			/>
 			<Cards
-				elements={elements}
+				elements={characters}
 				isLoading={isLoading}
 				toggleModal={toggleModal}
 				onCharacterChange={onCharacterChange}

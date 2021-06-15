@@ -1,6 +1,8 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import AppRoutes from './routes';
+import store from './redux/store';
 
 const theme = {
 	colorsNav: {
@@ -23,9 +25,11 @@ const theme = {
 
 function App() {
 	return (
-		<ThemeProvider theme={theme}>
-			<AppRoutes />
-		</ThemeProvider>
+		<Provider store={store}>
+			<ThemeProvider theme={theme}>
+				<AppRoutes />
+			</ThemeProvider>
+		</Provider>
 	);
 }
 

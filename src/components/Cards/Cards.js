@@ -3,10 +3,15 @@ import Card from '../Card/Card';
 import Loading from '../Loading/Loading';
 import { CardsStyle } from './styles';
 
-const Cards = ({ elements, isLoading, toggleModal, onCharacterChange }) => {
+const Cards = ({
+	elements = [],
+	isLoading,
+	toggleModal,
+	onCharacterChange,
+}) => {
 	return isLoading ? (
-		<Loading></Loading>
-	) : elements.length === 0 ? (
+		<Loading />
+	) : !elements.length ? (
 		<CardsStyle>
 			<h2 className='nofav'>No hay elementos favoritos... Todavía</h2>
 			{console.log(elements)}
