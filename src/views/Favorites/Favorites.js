@@ -28,11 +28,10 @@ function Favorites() {
 		if (query) {
 			const filtered = filteredFavorites(query, arrayOfFavorites);
 			dispatch(fetchCharactersSuccess(filtered));
-			console.log(filtered);
 		} else {
 			dispatch(fetchCharactersSuccess(arrayOfFavorites));
 		}
-	}, [query]);
+	}, [dispatch, query]);
 
 	const toggleModal = () => {
 		setIsModalOpen(!isModalOpen);
