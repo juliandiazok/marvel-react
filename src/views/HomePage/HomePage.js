@@ -30,7 +30,7 @@ function App() {
 
 	useEffect(() => {
 		getCharacters(values.character);
-	}, [values.character]);
+	}, [getCharacters, values.character]);
 
 	useEffect(() => {
 		if (query) {
@@ -38,7 +38,7 @@ function App() {
 		} else {
 			getCharacters();
 		}
-	}, [query]);
+	}, [getCharacters, query]);
 
 	const getCharacters = (c) =>
 		getAllCharacters(c)

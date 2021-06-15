@@ -6,7 +6,6 @@ import { ModalStyle, OverlayStyle } from './styles';
 function Modal({ activeCharacter = {}, toggleModal, theme }) {
 	const [comic, setComic] = useState([]);
 	const [isComicLoading, setComicLoading] = useState(true);
-	console.log(activeCharacter);
 	useEffect(() => {
 		getComics(activeCharacter.id)
 			.then((comics) => {

@@ -14,7 +14,6 @@ const Cards = ({
 	) : !elements.length ? (
 		<CardsStyle>
 			<h2 className='nofav'>No hay elementos favoritos... Todavía</h2>
-			{console.log(elements)}
 		</CardsStyle>
 	) : (
 		<CardsStyle>

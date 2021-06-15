@@ -18,7 +18,6 @@ const charactersReducer = (state = initialState, { type, payload }) => {
 				isLoading: false,
 			};
 		case 'SET_ACTIVE_CHARACTER':
-			console.log(payload);
 			return {
 				...state,
 				activeCharacter: payload,
