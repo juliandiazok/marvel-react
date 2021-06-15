@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import HomePage from '../views/HomePage';
-import Favorites from '../views/Favorites';
+import HomePage from '../views/HomePage/HomePage';
+import Favorites from '../views/Favorites/Favorites';
 
 function AppRoutes() {
 	return (
