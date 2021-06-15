@@ -14,9 +14,6 @@ import {
 } from '../../redux/characters/actions';
 import { setDarkTheme, setLightTheme } from '../../redux/theme/actions';
 
-/*const hash = "648f93f1f5364e8c67820b0de118c9bf"
-const URL = "https://gateway.marvel.com/v1/public/characters?ts=1&apikey=8f83230b46183b4e034c4dddfde45a8e&hash=" + hash; */
-
 function App() {
 	const dispatch = useDispatch();
 	const { characters, isLoading, activeCharacter } = useSelector(
@@ -28,9 +25,14 @@ function App() {
 	const { search } = useLocation();
 	const values = queryString.parse(search);
 
+	const getCharacters = (c) =>
+		getAllCharacters(c)
+			.then((characters) => dispatch(fetchCharactersSuccess(characters)))
+			.catch(() => dispatch(fetchCharactersError()));
+
 	useEffect(() => {
 		getCharacters(values.character);
-	}, [getCharacters, values.character]);
+	}, [values.character]);
 
 	useEffect(() => {
 		if (query) {
@@ -38,12 +40,7 @@ function App() {
 		} else {
 			getCharacters();
 		}
-	}, [getCharacters, query]);
-
-	const getCharacters = (c) =>
-		getAllCharacters(c)
-			.then((characters) => dispatch(fetchCharactersSuccess(characters)))
-			.catch(() => dispatch(fetchCharactersError()));
+	}, [query]);
 
 	const toggleModal = () => {
 		setIsModalOpen(!isModalOpen);
