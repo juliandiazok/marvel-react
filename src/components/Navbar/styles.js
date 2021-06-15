@@ -9,11 +9,9 @@ export const Nav = styled.nav`
 	padding: 0.5rem calc((50vw - 1000px) / 2);
 	z-index: 10;
 	margin: 4px 4px 4px 4px;
-	-webkit-box-shadow: 0px 15px 10px -15px gray, 0px -15px 10px -15px gray; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ 
-    -moz-box-shadow:    0px 15px 10px -15px gray, 0px -15px 10px -15px gray;  /* Firefox 3.5 - 3.6 
-    box-shadow:         0px 15px 10px -15px gray, 0px -15px 10px -15px gray;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 
-    /* Third Nav */
-	/* justify-content: flex-start; */
+	-webkit-box-shadow: 0px 15px 10px -15px gray, 0px -15px 10px -15px gray;
+	-moz-box-shadow: 0px 15px 10px -15px gray, 0px -15px 10px -15px gray;
+	box-shadow: 0px 15px 10px -15px gray, 0px -15px 10px -15px gray;
 `;
 
 export const NavLink = styled(Link)`
@@ -50,11 +48,6 @@ export const NavSearch = styled.div`
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-	/* Second Nav */
-	/* margin-right: 24px; */
-	/* Third Nav */
-	/* width: 100vw;
-  white-space: nowrap; */
 	@media screen and (max-width: 510px) {
 		display: none;
 	}
@@ -66,11 +59,6 @@ export const InputSearch = styled.div`
 	outline: none !important;
 	border-width: 0px;
 	border: none !important;
-	/* Second Nav */
-	/* margin-right: 24px; */
-	/* Third Nav */
-	/* width: 100vw;
-  white-space: nowrap; */
 	@media screen and (max-width: 510px) {
 		display: none;
 	}
@@ -80,9 +68,6 @@ export const NavBtn = styled.nav`
 	display: flex;
 	align-items: center;
 	font-size: 18px;
-	/* Third Nav */
-	/* justify-content: flex-end;
-  width: 100vw; */
 `;
 
 export const NavTheme = styled.nav`
