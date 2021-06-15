@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FavoritesStyle } from './styles';
+import { filteredFavorites } from '../../utils/characters';
 import Cards from '../../components/Cards/Cards';
 import Navbar from '../../components/Navbar/Navbar';
 import Modal from '../../components/Modal/Modal';
@@ -18,11 +19,10 @@ function Favorites() {
 	useEffect(() => {
 		var arrayOfFavorites = JSON.parse(localStorage.getItem('favorites') || '0');
 		if (query) {
-			var filtered = arrayOfFavorites.filter((f) =>
-				f.name.toUpperCase().startsWith(query.toUpperCase())
-			);
+			const filtered = filteredFavorites(query, arrayOfFavorites);
 			setElements(filtered);
 			setLoading(false);
+			console.log(filtered);
 		} else {
 			setElements(arrayOfFavorites);
 			setLoading(false);
