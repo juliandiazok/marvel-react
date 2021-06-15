@@ -6,7 +6,7 @@ import { ModalStyle, OverlayStyle } from './styles';
 function Modal({ activeCharacter = {}, toggleModal, theme }) {
 	const [comic, setComic] = useState([]);
 	const [isComicLoading, setComicLoading] = useState(true);
-
+	console.log(activeCharacter);
 	useEffect(() => {
 		getComics(activeCharacter.id)
 			.then((comics) => {
@@ -16,6 +16,11 @@ function Modal({ activeCharacter = {}, toggleModal, theme }) {
 				setComicLoading(false);
 			});
 	}, [activeCharacter.id]);
+	const getImageUrl = (character) => {
+		const { path = '', extension = '' } = character?.thumbnail || {};
+		const URL = `${path}/portrait_uncanny.${extension}`;
+		return URL;
+	};
 	return (
 		<ModalStyle mode={theme}>
 			<div>
@@ -31,18 +36,17 @@ function Modal({ activeCharacter = {}, toggleModal, theme }) {
 						<div className='grid-container'>
 							<div className='image'>
 								<img
-									src={
-										activeCharacter.thumbnail.path +
-										'/portrait_uncanny.' +
-										activeCharacter.thumbnail.extension
-									}
+									src={getImageUrl(activeCharacter)}
 									className='card-img'
 									alt={activeCharacter.name}></img>
 							</div>
 							<div className='modal-details'>
 								<div className='description'>{activeCharacter.description}</div>
 								<div className='comics'>
-									<h5>Number of comics: {activeCharacter.comics.available}</h5>
+									<h5>
+										Number of comics:{' '}
+										{activeCharacter?.comics?.available || '0'}
+									</h5>
 									{isComicLoading ? (
 										<ComicLoading></ComicLoading>
 									) : (
