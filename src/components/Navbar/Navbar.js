@@ -4,6 +4,7 @@ import {
 	NavLink,
 	NavMenu,
 	NavBtn,
+	NavTheme,
 	NavSearch,
 	InputSearch,
 	NavHidden,
@@ -13,21 +14,22 @@ import {
 } from './styles';
 import logoMarvel from '../../assets/marvel.svg';
 
-const Navbar = ({ search }) => {
+const Navbar = ({ search, changeTheme, theme }) => {
 	const [text, setText] = useState('');
+
 	const onSubmit = (event) => {
 		event.preventDefault();
 		search(text);
 	};
 	return (
 		<>
-			<Nav>
+			<Nav mode={theme}>
 				<NavLink to='/'>
 					<img src={logoMarvel} alt='logo' height='60%' />
 				</NavLink>
 				<NavMenu>
 					<form className='search' onSubmit={onSubmit}>
-						<NavSearch>
+						<NavSearch mode={theme}>
 							<i className='fas fa-search' onClick={onSubmit} />
 							<InputSearch>
 								<input
@@ -41,14 +43,20 @@ const Navbar = ({ search }) => {
 					</form>
 				</NavMenu>
 				<NavBtn>
+					<NavTheme onClick={changeTheme}>
+						<i
+							className={`${
+								theme === 'light' ? 'far' : 'fas'
+							} fa-moon fav`}></i>
+					</NavTheme>
 					<NavBtnLink to='/favorites'>
 						<i className='far fa-star fav'></i>
 					</NavBtnLink>
 				</NavBtn>
 			</Nav>
-			<NavHidden>
+			<NavHidden mode={theme}>
 				<form className='search' onSubmit={onSubmit}>
-					<NavHiddenSearch>
+					<NavHiddenSearch mode={theme}>
 						<i className='fas fa-search' onClick={onSubmit} />
 						<NavHiddenInput>
 							<input

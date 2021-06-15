@@ -1,22 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
-import styled from 'styled-components';
-import { getAllCharacters } from '../api/characters';
-import Cards from '../components/Cards/Cards';
-import Navbar from '../components/Navbar/Navbar';
-import Modal from '../components/Modal/Modal';
+import { AppStyle } from './styles';
+import { getAllCharacters } from '../../api/characters';
+import Cards from '../../components/Cards/Cards';
+import Navbar from '../../components/Navbar/Navbar';
+import Modal from '../../components/Modal/Modal';
 
 /*const hash = "648f93f1f5364e8c67820b0de118c9bf"
 const URL = "https://gateway.marvel.com/v1/public/characters?ts=1&apikey=8f83230b46183b4e034c4dddfde45a8e&hash=" + hash; */
-
-// styles App
-export const AppStyle = styled.header`
-	background-color: rgba(206, 205, 205, 0.589);
-	background-size: 100%;
-	min-height: 100vh;
-`;
-// styles App
 
 function App() {
 	const [elements, setElements] = useState([]);
@@ -24,6 +16,7 @@ function App() {
 	const [isLoading, setLoading] = useState(true);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [activeCharacter, setActiveCharacter] = useState({});
+	const [theme, setTheme] = useState('light');
 	const { search } = useLocation();
 	const values = queryString.parse(search);
 
@@ -56,10 +49,22 @@ function App() {
 		setActiveCharacter(element);
 	};
 
+	const changeTheme = () => {
+		if (theme === 'light') {
+			setTheme('dark');
+		} else {
+			setTheme('light');
+		}
+	};
+
 	return (
 		<AppStyle>
 			<div className='App'>
-				<Navbar search={(search) => setQuery(search)} />
+				<Navbar
+					search={(search) => setQuery(search)}
+					theme={theme}
+					changeTheme={changeTheme}
+				/>
 				<Cards
 					elements={elements}
 					isLoading={isLoading}
@@ -67,7 +72,11 @@ function App() {
 					onCharacterChange={onCharacterChange}
 				/>
 				{isModalOpen && (
-					<Modal activeCharacter={activeCharacter} toggleModal={toggleModal} />
+					<Modal
+						activeCharacter={activeCharacter}
+						toggleModal={toggleModal}
+						theme={theme}
+					/>
 				)}
 			</div>
 		</AppStyle>
