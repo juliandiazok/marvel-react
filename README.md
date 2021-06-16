@@ -23,6 +23,22 @@ To deploy this project run
 ## Tech Stack
 
 React, Redux, Styled Components, React-Router
+
+
+## Functionalities
+
+* Start with random characters. 
+* Search for characters that start with a word in the navigation bar. 
+* Search for characters that start with a word by URL (https://react-marvel-steel.vercel.app/?character={characterName}).
+* Ability to add, remove and view favorite characters.
+* Light mode and dark mode of view. 
+* Fully responsive page. 
+* Character details within a modal.
+
+
+## Problems
+
+For some reason, when implementing redux, the home page and the character search by URL bring up the required elements, and after a second, these are updated by another batch of random elements. This issue is still under investigation.
  
   
 ## Support
