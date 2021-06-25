@@ -21,6 +21,10 @@ const theme = {
 		light: '#212121',
 		dark: '#fff',
 	},
+	pageBackground: {
+		light: 'rgba(206, 205, 205, 0.589)',
+		dark: 'rgba(61, 61, 61, 0.8)',
+	},
 };
 
 function App() {

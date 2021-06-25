@@ -4,7 +4,7 @@ import { ComicLoadingStyle } from './styles';
 export const Loading = () => {
 	return (
 		<ComicLoadingStyle>
-			<h4>(Los comics se están cargando...)</h4>
+			<h4>(The comics are loading...)</h4>
 		</ComicLoadingStyle>
 	);
 };

@@ -34,7 +34,7 @@ const Navbar = ({ search, changeTheme, theme }) => {
 							<InputSearch>
 								<input
 									type='text'
-									placeholder='Buscar'
+									placeholder='Search'
 									onChange={(event) => setText(event.target.value)}
 									value={text}
 								/>

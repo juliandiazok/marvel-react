@@ -78,11 +78,13 @@ export const ModalStyle = styled.header`
 		color: #ef5350;
 	}
 
-	.cerrar {
+	.close {
+		margin-top: -8px;
 		margin-right: 15px;
 		display: flex;
 		align-items: center;
-		font-size: 22px;
+		font-size: 35px;
+		cursor: pointer;
 	}
 
 	.comics-container {

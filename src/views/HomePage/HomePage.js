@@ -59,7 +59,7 @@ function App() {
 	};
 
 	return (
-		<AppStyle>
+		<AppStyle mode={theme}>
 			<div className='App'>
 				<Navbar
 					search={(search) => setQuery(search)}

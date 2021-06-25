@@ -44,7 +44,7 @@ export const NavSearch = styled.div`
 	margin-left: 1vw;
 	color: ${(props) => props.theme.colorsIcon[props.mode]};
 	font-size: 16px;
-	opacity: 0.4;
+	opacity: 0.9;
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;

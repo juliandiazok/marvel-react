@@ -13,7 +13,7 @@ const Cards = ({
 		<Loading />
 	) : !elements.length ? (
 		<CardsStyle>
-			<h2 className='nofav'>No hay elementos favoritos... Todavía</h2>
+			<h2 className='nofav'>No hay elementos... Todavía</h2>
 		</CardsStyle>
 	) : (
 		<CardsStyle>

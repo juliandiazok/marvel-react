@@ -27,7 +27,7 @@ function Modal({ activeCharacter = {}, toggleModal, theme }) {
 					<div className='modal-header'>
 						<h2>{activeCharacter.name}</h2>
 						<i
-							className='far fa-window-close cerrar'
+							className='far fa-window-close close'
 							aria-label='Close'
 							onClick={toggleModal}></i>
 					</div>
